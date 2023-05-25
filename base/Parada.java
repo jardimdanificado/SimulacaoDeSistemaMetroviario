@@ -1,10 +1,10 @@
 package base;
 
-class parada {
+class Parada {
 	private String nome;
 	private List<passageiro> passageiros = new ArrayList<>();
 
-	public parada(String nome) {
+	public Parada(String nome) {
 		this.nome = nome;
 	}
 

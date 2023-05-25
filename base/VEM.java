@@ -1,10 +1,10 @@
 package base;
 
-class vem {
+class VEM {
 	private String nome;
 	private String tipo = "comum"; // comum, idoso, estudante
 	private double saldo = 0.00;
-	public vem(String nome, String tipo)
+	public VEM(String nome, String tipo)
 	{
 		this.nome = nome;
 		this.tipo = tipo;

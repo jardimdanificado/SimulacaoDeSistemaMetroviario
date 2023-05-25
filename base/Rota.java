@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import parada;
-import metro;
+import Parada;
+import Metro;
 
-class rota {
+class Rota {
 	private String nome;
 	private List<parada> paradas = new ArrayList<>();
 	private List<metro> veiculos = new ArrayList<>();

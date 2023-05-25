@@ -1,15 +1,15 @@
 package base;
 
-import vem;
-import parada;
-import metro;
+import VEM;
+import Parada;
+import Metro;
 
-class passageiro {
-	private parada posicao;
-	private vem passe;
-	private parada origem;
-	private parada destino;
-	private metro veiculo;
+class Passageiro {
+	private Parada posicao;
+	private VEM passe;
+	private Parada origem;
+	private Parada destino;
+	private Metro veiculo;
 	private String status = "fora";
 	/*
  		status  
@@ -19,16 +19,16 @@ class passageiro {
 	*/
 	
 
-	public passageiro(parada estacao, vem passe) {
+	public Passageiro(Parada estacao, VEM passe) {
 		this.posicao = posicao;
 		this.passe = passe;
 	}
 
-	protected void move(parada nova) {
+	protected void move(Parada nova) {
 		this.posicao = nova;
 	}
 
-	protected void adentrar(parada estacao)
+	protected void adentrar(Parada estacao)
 	{
 		if(this.status.equals("esperando") && this.passe.saldo > estacao.veiculos[0].passagem)
 		{
@@ -45,7 +45,7 @@ class passageiro {
 			this.passe.recarga(valor)
 	}
 
-	protected void definirRota(parada origem, parada destino)
+	protected void definirRota(Parada origem, Parada destino)
 	{
 		if(this.status.equals("fora"))
 		{
@@ -54,7 +54,7 @@ class passageiro {
 		}
 	}
 
-	protected void embarcar(metro veiculo)
+	protected void embarcar(Metro veiculo)
 	{
 		if(veiculo.posicao == this.posicao && this.status.equals("esperando"))
 		{

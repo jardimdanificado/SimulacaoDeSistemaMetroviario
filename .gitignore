@@ -1,0 +1,11 @@
+.classpath
+.project
+.replit
+*.prefs
+*.class
+pom.xml
+replit.nix
+*.jar
+.breakpoints
+.settings
+target

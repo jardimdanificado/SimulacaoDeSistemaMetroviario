@@ -3,17 +3,18 @@ package base;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import parada;
-import passageiro;
+import Parada;
+import Passageiro;
+import Rota;
 
-class metro {
+class Metro {
 	private String placa;
-	private rota rota;
-	private parada posicao;
+	private Rota rota;
+	private Parada posicao;
 	private int capacidade = 1125;// 5 vagões de 225 pessoas
-	private List<passageiro> passageiros = new ArrayList<>();
+	private List<Passageiro> passageiros = new ArrayList<>();
 
-	public metro(String placa, rota rota, int capacidade) {
+	public Metro(String placa, Rota rota, int capacidade) {
 		this.rota = rota;
 		this.posicao = 0;
 		this.capacidade = capacidade;
@@ -43,11 +44,11 @@ class metro {
 		return this.capacidade;
 	}
 
-	public void addPassageiro(passageiro p) {
+	public void addPassageiro(Passageiro p) {
 		this.passageiros.add(p)
 	}
 
-	public void rmPassageiro(passageiro p) {
+	public void rmPassageiro(Passageiro p) {
 		this.passageiros.remove(p)
 	}
 
