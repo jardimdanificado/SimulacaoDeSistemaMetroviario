@@ -18,8 +18,8 @@ class Main {
 				"idoso", "estudante", "estudante", "estudante", "estudante" };
 		base.Passageiro pessoa = new base.Passageiro(paradas.get(rng(0, paradas.size() - 1)),
 				nomes[rng(0, nomes.length - 1)], tipos[rng(0, tipos.length - 1)]);
-		System.out.println(pessoa.passe.nome + " " + pessoa.passe.tipo);
 		pessoa.passe.recarga(rng(50, 800));
+		System.out.println(pessoa.passe.nome + " " + pessoa.passe.tipo + " R$" + pessoa.passe.getSaldo());
 		return pessoa;
 	}
 
