@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Parada;
-import Metro;
+import base.Parada;
+import base.Metro;
 
-class Rota {
-	private String nome;
-	private List<parada> paradas = new ArrayList<>();
-	private List<metro> veiculos = new ArrayList<>();
-	private double passagem = 3.80;
+public class Rota {
+	public String nome;
+	public List<base.Parada> paradas = new ArrayList<>();
+	private List<base.Metro> veiculos = new ArrayList<>();
+	public double passagem = 3.80;
 
 	public Rota(String nome,double passagem, String... paradas) 
 	{
@@ -19,16 +19,16 @@ class Rota {
 		this.passagem = passagem;
 		if(paradas != null)
 			for(int i = 0; i < paradas.length;i++)
-				this.paradas = paradas.add(new parada(paradas[i]));
+				this.paradas.add(new base.Parada(paradas[i]));
 	}
-	public Rota(String nome,double passagem, parada[] paradas) 
+	public Rota(String nome,double passagem, base.Parada[] paradas) 
 	{
 		this.nome = nome;
 		this.passagem = passagem;
 		if(paradas != null)
 			this.paradas = Arrays.asList(paradas);
 	}
-	public Rota(String nome,double passagem, List<parada> paradas) 
+	public Rota(String nome,double passagem, List<base.Parada> paradas) 
 	{
 		this.nome = nome;
 		this.passagem = passagem;
@@ -37,10 +37,10 @@ class Rota {
 	}
 
 	public void addParada(String nome) {
-		paradas.add(new parada(nome));
+		paradas.add(new Parada(nome));
 	}
 
-	public void addParada(parada parad) {
+	public void addParada(base.Parada parad) {
 		paradas.add(parad);
 	}
 

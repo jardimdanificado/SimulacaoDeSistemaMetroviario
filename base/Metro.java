@@ -3,20 +3,20 @@ package base;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import Parada;
-import Passageiro;
-import Rota;
+import base.Parada;
+import base.Passageiro;
+import base.Rota;
 
-class Metro {
+public class Metro {
 	private String placa;
-	private Rota rota;
-	private Parada posicao;
+	public base.Rota rota;
+	protected base.Parada posicao;
 	private int capacidade = 1125;// 5 vagões de 225 pessoas
-	private List<Passageiro> passageiros = new ArrayList<>();
+	private List<base.Passageiro> passageiros = new ArrayList<>();
 
-	public Metro(String placa, Rota rota, int capacidade) {
+	public Metro(String placa, base.Rota rota, int capacidade) {
 		this.rota = rota;
-		this.posicao = 0;
+		this.posicao = rota.paradas.get(0);
 		this.capacidade = capacidade;
 	}
 
@@ -24,19 +24,22 @@ class Metro {
 		return this.placa;
 	}
 
-	public Rota getRota() {
+	public base.Rota getRota() {
 		return this.rota;
 	}
 
-	public void setRota(Rota rota) {
+	public void setRota(base.Rota rota) {
 		this.rota = rota;
 	}
 
 	public void setRota(String... paradas) {
-		this.rota = Arrays.asList(paradas);
+		List<base.Parada> p = new ArrayList<>();
+		for(int i = 0;i < paradas.length; i++)
+			p.add(paradas[i]);
+		this.rota = Arrays.asList(p);
 	}
 
-	public int getPosicao() {
+	public Parada getPosicao() {
 		return this.posicao;
 	}
 
@@ -44,17 +47,15 @@ class Metro {
 		return this.capacidade;
 	}
 
-	public void addPassageiro(Passageiro p) {
-		this.passageiros.add(p)
+	public void addPassageiro(base.Passageiro p) {
+		this.passageiros.add(p);
 	}
 
-	public void rmPassageiro(Passageiro p) {
-		this.passageiros.remove(p)
+	public void rmPassageiro(base.Passageiro p) {
+		this.passageiros.remove(p);
 	}
 
 	public void move(int tempo) {
-		this.posicao += 1;
-		if (this.posicao >= (this.rota.size() * 2) - 1)
-			this.posicao = 0;
+		//precisa reescrever
 	}
 }

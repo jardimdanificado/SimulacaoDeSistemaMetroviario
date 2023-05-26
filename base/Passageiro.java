@@ -1,15 +1,15 @@
 package base;
 
-import VEM;
-import Parada;
-import Metro;
+import base.VEM;
+import base.Parada;
+import base.Metro;
 
-class Passageiro {
-	private Parada posicao;
-	private VEM passe;
-	private Parada origem;
-	private Parada destino;
-	private Metro veiculo;
+public class Passageiro {
+	private base.Parada posicao;
+	public base.VEM passe;
+	private base.Parada origem;
+	private base.Parada destino;
+	private base.Metro veiculo;
 	private String status = "fora";
 	/*
  		status  
@@ -19,22 +19,27 @@ class Passageiro {
 	*/
 	
 
-	public Passageiro(Parada estacao, VEM passe) {
+	public Passageiro(base.Parada estacao, base.VEM passe) {
 		this.posicao = posicao;
 		this.passe = passe;
 	}
+	
+	public Passageiro(base.Parada estacao, String nome, String tipo) {
+		this.posicao = posicao;
+		this.passe = new base.VEM(nome,tipo);
+	}
 
-	protected void move(Parada nova) {
+	protected void move(base.Parada nova) {
 		this.posicao = nova;
 	}
 
-	protected void adentrar(Parada estacao)
+	protected void adentrar(base.Parada estacao)
 	{
-		if(this.status.equals("esperando") && this.passe.saldo > estacao.veiculos[0].passagem)
+		if(this.status.equals("esperando") && this.passe.getSaldo() > estacao.veiculo.rota.passagem)
 		{
 			this.posicao = estacao;
 			this.status = "esperando";
-			this.passe.debito(estacao.veiculos[0].passagem);
+			this.passe.debito(estacao.veiculo.rota.passagem);
 		}
 		
 	}
@@ -42,10 +47,10 @@ class Passageiro {
 	protected void recarregar(double valor)
 	{
 		if(this.status.equals("esperando") || this.status.equals("fora"))
-			this.passe.recarga(valor)
+			this.passe.recarga(valor);
 	}
 
-	protected void definirRota(Parada origem, Parada destino)
+	protected void definirRota(base.Parada origem, base.Parada destino)
 	{
 		if(this.status.equals("fora"))
 		{
@@ -54,7 +59,7 @@ class Passageiro {
 		}
 	}
 
-	protected void embarcar(Metro veiculo)
+	protected void embarcar(base.Metro veiculo)
 	{
 		if(veiculo.posicao == this.posicao && this.status.equals("esperando"))
 		{

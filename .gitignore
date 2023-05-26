@@ -8,4 +8,4 @@ replit.nix
 *.jar
 .breakpoints
 .settings
-target
+*.log
